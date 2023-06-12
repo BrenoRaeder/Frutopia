@@ -79,22 +79,11 @@ public class ProdutoService {
 		return produtoResDto;
 	}
 	
-	public Produto saveProduto(String nome, String descricao, String qtdEstoque, String dataCadastro, 
-			String valorUnitario, String imagem, String categoria){
+	public Produto saveProduto(Produto produto){
 		try {
-			Produto produto = new Produto();
-			produto.setNome(nome);
-			produto.setDescricao(descricao);
-			produto.setQtdEstoque(Integer.parseInt(qtdEstoque));
-			produto.setDataCadastro(LocalDate.parse(dataCadastro));
-			produto.setValorUnitario(Double.parseDouble(valorUnitario));
-			produto.setImagem(imagem);
+			Produto produtoResponse = produtoRepository.save(produto);
 			
-			Categoria novaCategoria = new Categoria();
-			novaCategoria.setIdCategoria(Integer.parseInt(categoria));
-			produto.setCategoria(novaCategoria);
-					
-			return produtoRepository.save(produto);
+			return produtoResponse;
 			
 		} catch (DataAccessException e) {
 			throw new IdNotFoundException("");

@@ -43,15 +43,10 @@ public class ProdutoController {
 		return new ResponseEntity<>(produtoService.getProdutoDtoById(id), HttpStatus.OK);
 	}
 	
-	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE
-			, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<Produto> saveProduto(@RequestPart("nome")String nome, @RequestPart("descricao")String descricao,
-			@RequestPart("qtdEstoque") String qtdEstoque, @RequestPart("dataCadastro")String dataCadastro,
-			@RequestPart("valorUnitario")String valorUnitario, @RequestPart("imagem")String imagem,
-			@RequestPart("categoria")String categoria) throws IOException {
+	@PostMapping
+	public ResponseEntity<Produto> saveProduto(@Valid @RequestBody Produto produto){
 		
-	    return new ResponseEntity<>(produtoService.saveProduto(nome, descricao, qtdEstoque, dataCadastro, valorUnitario,
-	    		imagem, categoria), HttpStatus.CREATED);
+	    return new ResponseEntity<>(produtoService.saveProduto(produto), HttpStatus.CREATED);
 	}
 
 	@PutMapping(value = "/{id}")
