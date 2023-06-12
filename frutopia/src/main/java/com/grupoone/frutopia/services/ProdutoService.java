@@ -80,7 +80,7 @@ public class ProdutoService {
 	}
 	
 	public Produto saveProduto(String nome, String descricao, String qtdEstoque, String dataCadastro, 
-			String valorUnitario, MultipartFile imagem, String categoria){
+			String valorUnitario, String imagem, String categoria){
 		try {
 			Produto produto = new Produto();
 			produto.setNome(nome);
@@ -88,12 +88,7 @@ public class ProdutoService {
 			produto.setQtdEstoque(Integer.parseInt(qtdEstoque));
 			produto.setDataCadastro(LocalDate.parse(dataCadastro));
 			produto.setValorUnitario(Double.parseDouble(valorUnitario));
-			
-			try {
-				produto.setImagem(imagem.getBytes());
-			} catch (IOException e) {
-				throw new UploadArquivoException();
-			}
+			produto.setImagem(imagem);
 			
 			Categoria novaCategoria = new Categoria();
 			novaCategoria.setIdCategoria(Integer.parseInt(categoria));

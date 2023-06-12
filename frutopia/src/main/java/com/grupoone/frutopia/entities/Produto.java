@@ -53,10 +53,9 @@ import jakarta.validation.constraints.NotNull;
 	@Column(name = "valor_unitario")
 	private Double valorUnitario;
 
-	@Lob
-	@JdbcTypeCode(SqlTypes.BINARY)
-    @Column(name = "imagem", length = 200)
-    private byte[] imagem;
+	
+    @Column(name = "imagem")
+    private String imagem;
 
 	@ManyToOne
 	@JoinColumn(name = "id_categoria_FK", referencedColumnName = "id_categoria")
@@ -70,7 +69,7 @@ import jakarta.validation.constraints.NotNull;
 	}
 
 	public Produto(Integer idProduto, String nome, String descricao, Integer qtdEstoque,
-			LocalDate dataCadastro, Double valorUnitario, byte[] imagem, Categoria categoria) {
+			LocalDate dataCadastro, Double valorUnitario, String imagem, Categoria categoria) {
 		super();
 		this.idProduto = idProduto;
 		this.nome = nome;
@@ -130,11 +129,11 @@ import jakarta.validation.constraints.NotNull;
 		this.valorUnitario = valorUnitario;
 	}
 
-	public byte[] getImagem() {
+	public String getImagem() {
 		return imagem;
 	}
 
-	public void setImagem(byte[] imagem) {
+	public void setImagem(String imagem) {
 		this.imagem = imagem;
 	}
 
