@@ -42,14 +42,16 @@ public class WebSecurityConfig {
             .exceptionHandling(handling -> handling.authenticationEntryPoint(unauthorizedHandler)) //configura a classe para tratamento da excecao de autenticacao
             .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //define a politica de sessao
             .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/auth/**","/roles/**","/swagger-ui/**", "/v3/api-docs/**").permitAll() //define as rotas publicas/abertas
-                    .requestMatchers(HttpMethod.GET, "/produtos/**","/categorias/**").permitAll() 
-                    .requestMatchers("/pedidos/**","/itens_pedidos/**").hasAnyRole("CLIENTE", "USER","ADMIN")// autoriza o acesso a rotas por perfil
-                    .requestMatchers(HttpMethod.POST, "/produtos/**","/categorias/**").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.PUT,"/produtos/**","/categorias/**").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.DELETE,"/produtos/**","/categorias/**").hasRole("ADMIN")
-                    .requestMatchers("/usuarios/**","/enderecos/**","/clientes/**").hasRole("ADMIN")
-                    .anyRequest().authenticated()) //demais rotas, nao configuradas acima, so poderao ser acessadas mediante autenticacao
+            		.requestMatchers("/**").permitAll()
+          		  	.anyRequest().authenticated())
+//                    .requestMatchers("/auth/**","/roles/**","/swagger-ui/**", "/v3/api-docs/**").permitAll() //define as rotas publicas/abertas
+//                    .requestMatchers(HttpMethod.GET, "/produtos/**","/categorias/**").permitAll() 
+//                    .requestMatchers("/pedidos/**","/itens_pedidos/**").hasAnyRole("CLIENTE", "USER","ADMIN")// autoriza o acesso a rotas por perfil
+//                    .requestMatchers(HttpMethod.POST, "/produtos/**","/categorias/**").hasRole("ADMIN")
+//                    .requestMatchers(HttpMethod.PUT,"/produtos/**","/categorias/**").hasRole("ADMIN")
+//                    .requestMatchers(HttpMethod.DELETE,"/produtos/**","/categorias/**").hasRole("ADMIN")
+//                    .requestMatchers("/usuarios/**","/enderecos/**","/clientes/**").hasRole("ADMIN")
+//                    .anyRequest().authenticated()) //demais rotas, nao configuradas acima, so poderao ser acessadas mediante autenticacao
 		;		
 		
 		http.authenticationProvider(authenticationProvider()); //define o provedor de autenticacao
