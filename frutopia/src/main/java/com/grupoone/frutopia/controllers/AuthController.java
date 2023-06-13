@@ -117,6 +117,6 @@ public class AuthController {
 		user.setRoles(roles);
 		userRepository.save(user);
 		
-		return ResponseEntity.ok(new MessageResponseDTO("Usuário registrado com sucesso!"));
+		return ResponseEntity.ok(new MessageResponseDTO(user.getId() + " - Usuário registrado com sucesso!"));
 	}
 }
