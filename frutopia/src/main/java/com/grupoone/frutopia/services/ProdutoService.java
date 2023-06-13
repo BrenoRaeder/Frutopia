@@ -68,6 +68,7 @@ public class ProdutoService {
 		produtoResDto.setValorUnitario(produto.getValorUnitario());
 		CategoriaResumidaDTO categoriaResDto = modelMapper.map(produto.getCategoria(), CategoriaResumidaDTO.class);
 		produtoResDto.setCategoriaResDTO(categoriaResDto);
+		produtoResDto.setImagem(produto.getImagem());
 		
 		List<ItemPedidoResumidoDTO> listaItensPedidos = new ArrayList<>();
 		for(ItemPedido item : produto.getListaItensPedidos()) {
