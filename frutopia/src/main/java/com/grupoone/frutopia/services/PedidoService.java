@@ -56,6 +56,7 @@ public class PedidoService {
 			List<ItemPedidoResumidoDTO> listaItemPedido = new ArrayList<>();
 			for(ItemPedido item : listaPedidos.get(i).getListaItemPedido()) {
 				ItemPedidoResumidoDTO itemPedidoDTO = modelMapper.map(item, ItemPedidoResumidoDTO.class);
+				itemPedidoDTO.setNome(item.getProduto().getNome());
 				listaItemPedido.add(itemPedidoDTO);
 			}
 			
