@@ -31,8 +31,6 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_pedido")
 	private Integer idPedido;
-
-	@NotNull
 	@Column(name = "data_pedido")  // para garantir formato do LocalDateTime salvo no Json
 	private Instant dataPedido;
 
@@ -86,13 +84,13 @@ public class Pedido {
 	}
 	
 	public void setDataPedido(Instant dataPedido) {
-        Instant currentDate = Instant.now(); 
+        this.dataPedido = Instant.now(); 
 
-       if (dataPedido.isAfter(currentDate)) {
-           this.dataPedido = dataPedido;
-       } else {
-           throw new IllegalArgumentException("Data de Pedido inválida: Datas retroativas não são permitidas.");
-       }
+//       if (dataPedido.isAfter(currentDate)) {
+//           this.dataPedido = dataPedido;
+//       } else {
+//           throw new IllegalArgumentException("Data de Pedido inválida: Datas retroativas não são permitidas.");
+//       }
     }
 
 	public LocalDateTime getDataEntrega() {
