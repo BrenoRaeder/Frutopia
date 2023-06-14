@@ -1,5 +1,6 @@
 package com.grupoone.frutopia.services;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -91,10 +92,10 @@ public class PedidoService {
 	public Pedido savePedido(Pedido pedido) {
 		try {
 			//calculo de valores brutos e liquidos
+			pedido.setDataPedido(Instant.now());
 			Pedido pedidoResponse =  pedidoRepository.save(pedido);
 			
-//			geraRelatorioPedido(pedido);
-			return pedido;
+			return pedidoResponse;
 		} catch(DataAccessException e) {
 			throw new IdNotFoundException("");
 		}

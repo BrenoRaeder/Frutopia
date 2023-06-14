@@ -84,7 +84,7 @@ public class Pedido {
 	}
 	
 	public void setDataPedido(Instant dataPedido) {
-        this.dataPedido = Instant.now(); 
+        this.dataPedido = dataPedido; 
 
 //       if (dataPedido.isAfter(currentDate)) {
 //           this.dataPedido = dataPedido;
