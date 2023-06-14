@@ -13,6 +13,7 @@ public class ClienteDTO {
 	private EnderecoResumidoDTO enderecoResumidoDto;
 	private String nomeCompleto;
 	private String telefone;
+	private UserDTO user;
 	private List<PedidoResumidoDTO> listaPedidosResumidosDto = new ArrayList<>();
 
 	public ClienteDTO() {
@@ -20,7 +21,8 @@ public class ClienteDTO {
 	}
 
 	public ClienteDTO(Integer idCliente, String cpf, LocalDate dataNascimento, String email,
-			EnderecoResumidoDTO enderecoResumidoDto, String nomeCompleto, String telefone) {
+			EnderecoResumidoDTO enderecoResumidoDto, String nomeCompleto, String telefone, UserDTO user,
+			List<PedidoResumidoDTO> listaPedidosResumidosDto) {
 		super();
 		this.idCliente = idCliente;
 		this.cpf = cpf;
@@ -29,6 +31,8 @@ public class ClienteDTO {
 		this.enderecoResumidoDto = enderecoResumidoDto;
 		this.nomeCompleto = nomeCompleto;
 		this.telefone = telefone;
+		this.user = user;
+		this.listaPedidosResumidosDto = listaPedidosResumidosDto;
 	}
 
 	public Integer getIdCliente() {
@@ -85,6 +89,14 @@ public class ClienteDTO {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public UserDTO getUser() {
+		return user;
+	}
+
+	public void setUser(UserDTO user) {
+		this.user = user;
 	}
 
 	public List<PedidoResumidoDTO> getListaPedidosResumidosDto() {

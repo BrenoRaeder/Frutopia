@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import com.grupoone.frutopia.dto.ClienteDTO;
 import com.grupoone.frutopia.dto.EnderecoResumidoDTO;
 import com.grupoone.frutopia.dto.PedidoResumidoDTO;
-import com.grupoone.frutopia.entities.Categoria;
+import com.grupoone.frutopia.dto.UserDTO;
 import com.grupoone.frutopia.entities.Cliente;
 import com.grupoone.frutopia.entities.Pedido;
 import com.grupoone.frutopia.exceptions.IdNotFoundException;
@@ -66,6 +66,8 @@ public class ClienteService {
 		clienteDto.setTelefone(cliente.getTelefone());
 		clienteDto.setEnderecoResumidoDto(modelMapper.map(cliente.getEndereco(),
 				EnderecoResumidoDTO.class));
+		clienteDto.setUser(modelMapper.map(cliente.getUser(), 
+				UserDTO.class));
 
 		List<PedidoResumidoDTO> listaPedidos = new ArrayList<>();
 		for (Pedido pedido : cliente.getListaPedidos()) {
